@@ -1,7 +1,3 @@
-/*********************************************
-* This is the main repository of Bence Papp
-*********************************************/
-
 [git-lesson-repository](https://github.com/expertneo/git-lesson-repository)
 <br />
 [Trial](https://github.com/expertneo/Trial)
