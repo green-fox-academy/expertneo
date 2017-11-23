@@ -1,0 +1,13 @@
+.block{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid;
+    width: 350px;
+    height: 110px;
+    background-color: rgb(38, 144, 160);
+    border-color:rgb(126, 206, 150);
+    border-width: 5px;
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(17, 84, 101);
+}

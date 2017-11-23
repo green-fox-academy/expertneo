@@ -1,0 +1,20 @@
+h1 {
+    font-size: 30px;
+    color: rgb(250, 102, 79);
+}
+
+h2{
+    font-size: 20px;
+    color: rgb(143, 40, 222);
+}
+
+ol {
+    list-style: upper-roman;
+    text-decoration: underline;
+    color: #FF8FFD;
+}
+
+ol :nth-last-of-type(1) {
+    color: black;
+    text-decoration: underline;
+}

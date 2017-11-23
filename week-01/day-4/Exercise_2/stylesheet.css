@@ -1,0 +1,37 @@
+.block{
+    padding: 10px;
+    margin: 0px;
+    border: 1px solid;
+    width: 350px;
+    height: 110px;
+    border-color:rgb(85, 131, 240);
+    border-width: 15px;
+    font-size: 36px;
+    font-family: 'Roboto', sans-serif;
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block:nth-of-type(1){
+    background-color: rgb(227, 120, 120);
+    border-bottom-width: 0px;
+}
+
+.block:nth-of-type(2){
+    background-color: rgb(238, 241, 109);
+    border-bottom: 0px;
+    border-top-width: 0px    
+}
+
+.block:nth-of-type(3){
+    background-color: rgb(172, 229, 229);
+    border-bottom: 0px;
+    border-top-width: 0px    
+}
+
+.block:nth-of-type(4){
+    background-color: rgb(125, 145, 225);
+    border-top-width: 0px        
+}
