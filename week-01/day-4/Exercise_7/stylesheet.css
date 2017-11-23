@@ -1,0 +1,29 @@
+*{
+    line-height: 10px;    
+}
+
+.container>div {
+    padding: 5px;
+    display: block;
+    border: 1px green solid;
+    width: 300px;
+    font-weight: bold;    
+}
+
+.asteroid.big {
+    color: blue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+p.asteroid {
+    background-color: yellow;
+    display: block;
+    width: 300px;
+    padding: 5px;        
+}
+
+.asteroid.b329.big {
+    size: 20px;
+    font-weight: bold;        
+}
