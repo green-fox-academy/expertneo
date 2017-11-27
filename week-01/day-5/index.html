@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>8th exercise</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <article class="top">
+            <h1>Profil</h1>
+        </article>
+        <article class="middle one">
+            <div class="text">Personal info</div>
+            <fieldset>
+                <legend>Name *</legend>
+                <input class="input full" type="text" required/>                
+            </fieldset>
+            <div class="ev nem">
+                <fieldset class="date">
+                    <legend>Date of birth</legend>
+                    <input class="input text" placeholder="e.g. 1989" type="text" required/>                
+                </fieldset>
+                <fieldset class="gender date">
+                    <legend>Gender</legend>
+                    <input class="input radio" type="radio" name="gender" id="male" required/>
+                    <label for="male">Male</label>                
+                    <input class="input radio" type="radio" name="gender" id="female" required/>
+                    <label for="female">Female</label>                                    
+                </fieldset>  
+            </div>
+            <fieldset class="brand">
+                <legend>What brand do you like?</legend>
+                <ul class="checkbox-grid">
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Adidas" required/>            
+                    <label for="Adidas">Adidas</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Apple" required/>                
+                    <label for="Apple">Apple</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Coca-Cola" required/>                
+                    <label for="Coca-Cola">Coca-Cola</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Mazda" required/>                
+                    <label for="Mazda">Mazda</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Nike" required/>                
+                    <label for="Nike">Nike</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Opel" required/>
+                    <label for="Opel">Opel</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Ray-Ban" required/>
+                    <label for="Ray-Ban">Ray-Ban</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Starbucks" required/>
+                    <label for="Starbucks">Starbucks</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Tesla" required/>
+                    <label for="Tesla">Tesla</label></li>
+                    <li><input class="input checkbox" type="checkbox" name="checkbox" id="Yahoo" required/>
+                    <label for="Yahoo">Yahoo</label></li>
+                </ul>
+                <br>
+                <p class="choices">You can have multiple choices!</p>
+            </fieldset>   
+        </article>
+        <article class="middle two">
+            <div class="text">Contacts</div>
+            <fieldset >
+                <legend>Phone number</legend>
+                <input class="input full" type="tel" id="telno" name="telno" placeholder="+36 -- --- ----">
+            </fieldset>
+            <fieldset>
+                <legend>E-mail</legend>
+                <input class="input full" type="email" id="email" name="email" placeholder="name@domain">
+            </fieldset>
+            <fieldset>
+                <legend>Facebook profile</legend>
+                <input class="input full" type="text" id="fb" name="fb" placeholder="http://facebook.com/...">
+            </fieldset>
+            <fieldset>
+                <legend>Twitter profile</legend>
+                <input class="input full" type="text" id="twitter" name="twitter" placeholder="http://twitter.com/...">
+            </fieldset>
+            <fieldset>
+                <legend>Facebook profile</legend>
+                <input class="input full" type="text" id="tab" name="fb" placeholder="http://facebook.com/...">
+            </fieldset>
+                                
+        </article>
+        <article class="bottom">
+            <p>here comes the third box content</p>
+        </article>
+        
+    </main>
+</body>
+
+</html>
