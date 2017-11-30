@@ -22,17 +22,23 @@ public class sort {
 //        for (int counter : initial) {
 //            System.out.println(counter);
 
-            ascending(initial);
-            descending(initial);
-        }
+        boolean selector = true;
 
-    public static void ascending (ArrayList<Integer> input) {
+        if (selector == true) {
+            descending(initial);
+        } else {
+            ascending(initial);
+        }
+    }
+
+    public static void ascending(ArrayList<Integer> input) {
         System.out.println("After Sorting (ascending):");
         for (int counter : input) {
             System.out.println(counter);
         }
     }
-    public static void descending (ArrayList<Integer> input) {
+
+    public static void descending(ArrayList<Integer> input) {
         Collections.sort(input, Collections.reverseOrder());
         System.out.println("After Sorting (descending):");
         for (int counter : input) {
