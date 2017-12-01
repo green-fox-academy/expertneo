@@ -12,12 +12,12 @@ public class palindromeSearcher {
         String c = "racecar";
 
 
-//        palindromesearch(a);
-//        System.out.println(output);
+        palindromesearch(a);
+        System.out.println(output);
 //        palindromesearch(b);
 //        System.out.println(output);
-        palindromesearch(c);
-        System.out.println(output);
+//        palindromesearch(c);
+//        System.out.println(output);
     }
 
     private static void palindromesearch(String input1) {
