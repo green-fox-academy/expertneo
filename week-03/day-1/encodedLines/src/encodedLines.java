@@ -35,6 +35,8 @@ public class encodedLines {
     abc.add("x");
     abc.add("y");
     abc.add("z");
+    abc.add("/");
+    abc.add(".");
 
     String path = "encoded-lines.txt";
 
@@ -42,19 +44,20 @@ public class encodedLines {
     List<String> importedText = readingThefile(path);
     System.out.println(readingThefile(path));   //QC
 
-    decrypter(importedText, abc);
+//    System.out.println(decrypter(importedText, abc));
+    System.out.println(abc.indexOf(importedText.get(0).charAt(0).to);
 
   }
 
-  private static void decrypter(List<String> text, List<String> abc) {
-    List<String> decrypted_step1 = new ArrayList<>();
+  private static List<Integer> decrypter(List<String> text, List<String> abc) {
+    List<Integer> decryptedInAbc = new ArrayList<>();
     for (int i = 0; i < text.size(); i++) {
       for (int j = 0; j < text.get(i).length(); j++) {
-        decrypted_step1.add()
+        decryptedInAbc.add(i, abc.indexOf(text.get(i).charAt(j)));
+        System.out.println(text.get(i).charAt(j));
       }
-
     }
-
+    return decryptedInAbc;
   }
 
   private static List<String> readingThefile(String inputText) {
