@@ -28,6 +28,7 @@ public class countLines {
       sizeVar = lines.size();
     } catch (Exception e) {
       System.out.println("Can't read the file");
+      sizeVar = 0;
     }
     return sizeVar;
   }
