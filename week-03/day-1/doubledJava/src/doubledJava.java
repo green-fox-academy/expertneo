@@ -12,17 +12,11 @@ public class doubledJava {
 
     loadingTheFile(path);
 
-    /*QC start
-    System.out.println("QC value of: loadingTheFile(path)");
-    QC end*/
-
-
     List<String> qcCheck = loadingTheFile(path);
 //    System.out.println(qcCheck);
     doubleEliminator(qcCheck);
     String veryFinalString = doubleEliminator(qcCheck);
     System.out.println(veryFinalString);
-
   }
 
   private static String doubleEliminator(List<String> input1) {
