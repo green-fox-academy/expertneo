@@ -13,7 +13,6 @@ public class reverseOrder {
     readingThefile(path);
     System.out.println(path);   //
     reversingOrder(readingThefile(path));
-
   }
 
   private static void reversingOrder(List<String> inputText) {
