@@ -16,9 +16,7 @@ public class starryNight {
     graphics.setColor(Color.BLACK);
     graphics.fillRect(0,0,WIDTH, HEIGHT);
 
-
     // &&&&&&&&&&& STARS
-
 
     for (int i = 0; i < 20; i++) {
       Random rand = new Random();
@@ -36,8 +34,6 @@ public class starryNight {
       graphics.setColor(randomColor);
       graphics.drawRect(randomX, randomY, 5, 5);
     }
-
-
   }
 
   //    Don't touch the code below
