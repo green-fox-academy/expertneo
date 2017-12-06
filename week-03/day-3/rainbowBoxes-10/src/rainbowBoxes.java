@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.*;
 
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 
@@ -10,9 +11,17 @@ public class rainbowBoxes {
     // and draws a square of that size and color to the center of the canvas.
     // create a loop that fills the canvas with rainbow colored squares.
 
-    int size = 100;
-    Color color = Color.blue;
-    squareDrawer(graphics, size, color);
+    int size = 10;
+
+    for (int i = 0; i < 100 ; i++) {
+      size = size + 10;
+      Random rand = new Random();
+      float r = rand.nextFloat();
+      float g = rand.nextFloat();
+      float b = rand.nextFloat();
+      Color randomColor = new Color(r, g, b);
+      squareDrawer(graphics, size, randomColor);
+    }
   }
 
   private static void squareDrawer(Graphics graphics, int size, Color color) {
