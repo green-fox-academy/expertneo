@@ -7,7 +7,7 @@ public class fibonacci {
     // and so on. Define a recursive fibonacci(n) method that returns the nth
     // fibonacci number, with n=0 representing the start of the sequence.
 
-    int n = 5;
+    int n = 50;
     System.out.println(fibonacciCalculator(n));
 
   }
