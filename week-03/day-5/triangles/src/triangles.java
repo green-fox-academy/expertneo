@@ -7,7 +7,7 @@ import static javax.swing.JFrame.EXIT_ON_CLOSE;
 public class triangles {
   public static void mainDraw(Graphics graphics) {
 
-    int level = 3;
+    int level = 2;
     int size = WIDTH;
     int padding = 10;
 
@@ -54,7 +54,7 @@ public class triangles {
       drawTriangle(graphics, x, y);
 
       int[] x1 = new int[3];    //DONE
-      x1[0] = x[0] / 2;
+      x1[0] = x[0] - size / 8;
       x1[1] = x[1] / 2;
       x1[2] = x[2] / 2;
       int[] y1 = new int[3];    //DONE
@@ -63,8 +63,8 @@ public class triangles {
       y1[2] = y[2];
 
       int[] x2 = new int[3];
-      x2[0] = x[0]*5 / 2;
-      x2[1] = x[0]*7 / 2;
+      x2[0] = x[1] - size / 8;
+      x2[1] = x[1] + size / 8;
       x2[2] = x[1];
       int[] y2 = new int[3];
       y2[0] = y[0] / 2;

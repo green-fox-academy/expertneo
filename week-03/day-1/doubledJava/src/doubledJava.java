@@ -10,10 +10,7 @@ public class doubledJava {
     // Create a method that decrypts the duplicated-chars.txt
     String path = "duplicated-chars.txt";
 
-    loadingTheFile(path);
-
     List<String> qcCheck = loadingTheFile(path);
-//    System.out.println(qcCheck);
     doubleEliminator(qcCheck);
     String veryFinalString = doubleEliminator(qcCheck);
     System.out.println(veryFinalString);
@@ -21,21 +18,14 @@ public class doubledJava {
 
   private static String doubleEliminator(List<String> input1) {
     String listOriginal = String.join(",", input1);
-//    System.out.println("String after merging it");
-//    System.out.println(listOriginal);
     String[] listFinal = new String[(listOriginal.length() / 2)];
     String[] listOriginalSplit = listOriginal.split("");
-//    System.out.println("String after splitting it");
-//    System.out.println(Arrays.toString(listOriginalSplit));
-//    System.out.println(listFinal[10]);
-//    System.out.println(listOriginalSplit[10]);
     int counter = 0;
     for (int i = 0; i < (listOriginalSplit.length / 2); i++) {
       listFinal[i] = listOriginalSplit[counter];
       counter = (counter + 2);
     }
-    String veryFinalList = String.join("", listFinal);
-    return veryFinalList;
+    return String.join("", listFinal);
   }
 
   private static List<String> loadingTheFile(String path) {

@@ -11,11 +11,7 @@ public class reversedLines {
     String path = "reversed-lines.txt";
 
     List<String> importedText = readingthefile(path);
-    System.out.println(importedText);   //QC
-
     decrypter(importedText);
-
-
   }
 
   private static void decrypter(List<String> inputText) {
@@ -33,7 +29,7 @@ public class reversedLines {
       Path filePath = Paths.get(inputPath);
       initialText = Files.readAllLines(filePath);
     } catch (IOException e) {
-      System.out.println("IOException happened! You fucked up so BAD! :D");
+      System.out.println("IOException happened!");
     }
     return initialText;
   }
