@@ -16,13 +16,13 @@ public class tree {
 
     List<tree> myTrees = new ArrayList<>();
 
-    tree mapple = new tree ("Large", "Yellow", "200", "F");
-    tree ebony = new tree ("medium", "Yellow", "34", "M");
-    tree oak = new tree ("Large", "green", "50", "F");
-    tree pine = new tree ("Large", "green", "190", "F");
-    tree bonsai = new tree ("small", "green", "5", "M");
+    tree maple = new tree ("Large", "Yellow", 20, 'F');
+    tree ebony = new tree ("medium", "Yellow", 34, 'F');
+    tree oak = new tree ("Large", "green", 50, 'M');
+    tree pine = new tree ("Large", "green", 190, 'F');
+    tree bonsai = new tree ("small", "green", 5, 'M');
 
-    myTrees.add(mapple);
+    myTrees.add(maple);
     myTrees.add(ebony);
     myTrees.add(oak);
     myTrees.add(pine);
@@ -30,6 +30,5 @@ public class tree {
   }
 
   public static void main(String[] args) {
-
   }
 }
