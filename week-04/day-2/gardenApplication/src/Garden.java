@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Flow;
@@ -19,7 +18,7 @@ public class Garden {
     setNumberOfPlants(1);
   }
 
-  public int addFlower (Flower flower) {
+  public void addFlower (Flower flower) {
     garden.add(flower);
     setNumberOfPlants(1);
   }
@@ -32,4 +31,5 @@ public class Garden {
     this.numberOfPlants = numberOfPlants + value;
     return this.numberOfPlants;
   }
+
 }
