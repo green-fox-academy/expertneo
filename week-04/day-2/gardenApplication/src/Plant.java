@@ -1,21 +1,15 @@
 import java.awt.*;
 
 public class Plant {
-  String type;  //if tree, oak tree or some other tree, etc.
-  String size;  //Large, medium or small
-  Color color;
+  private Color color;
   int waterStatus;
 
-  public Plant (String type, String size, Color color, int waterStatus){
-    this.type = type;
-    this.size = size;
+  public Plant (Color color, int waterStatus){
     this.color = color;
     this.waterStatus = waterStatus;
   }
 
   public Plant () {
-    this.type = "zold levelu";
-    this.size = "Medium";
     this.color = Color.green;
     this.waterStatus = 0;
   }
