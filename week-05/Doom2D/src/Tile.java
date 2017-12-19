@@ -7,7 +7,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class Appearance extends Objects {
+public class Tile extends AnyObjects {
+  boolean isWall;
 
   BufferedImage path;
   BufferedImage wall;
@@ -33,13 +34,28 @@ public class Appearance extends Objects {
     for (int i = 0; i < 10; i++) {
       for (int j = 0; j < 10; j++) {
         if (boardMatrix[i][j] == 'p') {
-          Objects floor = new Objects("floor.png", j * 72, i * 72);
+          AnyObjects floor = new AnyObjects("floor.png", j * 72, i * 72);
           floor.draw(graphics);
         } else {
-          Objects wall = new Objects("wall.png", j * 72, i * 72);
+          AnyObjects wall = new AnyObjects("wall.png", j * 72, i * 72);
           wall.draw(graphics);
         }
       }
     }
+  }
+
+  public boolean[][] canWalkthereChecker(String fileName) {
+    char[][] labirinthLayout = readBoard(fileName);
+    boolean[][] canWalkThere = new boolean[10][10];
+    for (int i = 0; i < 10; i++) {
+      for (int j = 0; j < 10; j++) {
+        if (labirinthLayout[i][j] == 'p') {
+          canWalkThere[i][j] = true;
+        } else {
+          canWalkThere[i][j] = false;
+        }
+      }
+    }
+    return canWalkThere;
   }
 }

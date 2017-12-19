@@ -4,14 +4,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Objects {
+public class AnyObjects {
   BufferedImage image;
   int posX, posY;
 
-  public Objects() {
+  public AnyObjects() {
   }
 
-  public Objects(String filename, int posX, int posY) {
+  public AnyObjects(String filename, int posX, int posY) {
     this.posX = posX;
     this.posY = posY;
     try {
@@ -27,4 +27,3 @@ public class Objects {
     }
   }
 }
-

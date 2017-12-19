@@ -2,18 +2,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Arrays;
 
 public class Board extends JComponent implements KeyListener {
-  int testBoxX;
-  int testBoxY;
+  private int heroPositionX;
+  private int heroPositionY;
+  private int boardWidth = 720;
+  private int boardHeight = 720;
 
   public Board() {
-    testBoxX = 0;
-    testBoxY = 0;
+    heroPositionX = 0;
+    heroPositionY = 0;
 
     // set the size of your draw board
-    setPreferredSize(new Dimension(720, 720));
+    setPreferredSize(new Dimension(boardWidth, boardHeight));
     setVisible(true);
   }
 
@@ -22,14 +23,12 @@ public class Board extends JComponent implements KeyListener {
     super.paint(graphics);
     // here you have a 720x720 canvas
     // you can create and draw an image using the class below e.g.
-    Objects image = new Objects("floor.png", 0, 0);
-    Appearance asd = new Appearance();
-    asd.readBoard("map.txt");
-    asd.drawBoard(graphics, asd.readBoard("map.txt"));
+    Tile map = new Tile();
+    map.readBoard("map.txt");
+    map.drawBoard(graphics, map.readBoard("map.txt"));
 
-    Objects hero = new Objects("bence.png", testBoxX, testBoxY);
+    Hero hero = new Hero("bence.png", heroPositionX, heroPositionY);
     hero.draw(graphics);
-//    graphics.fillRect(testBoxX, testBoxY, 72, 72);
   }
 
   public static void main(String[] args) {
@@ -47,8 +46,6 @@ public class Board extends JComponent implements KeyListener {
     frame.addKeyListener(board);
     // Notice (at the top) that we can only do this
     // because this Board class (the type of the board object) is also a KeyListener
-
-
   }
 
   // To be a KeyListener the class needs to have these 3 methods in it
@@ -63,17 +60,17 @@ public class Board extends JComponent implements KeyListener {
   // But actually we can use just this one for our goals here
   @Override
   public void keyReleased(KeyEvent e) {
+    Hero hero = new Hero("bence.png", heroPositionX, heroPositionY);
     // When the up or down keys hit, we change the position of our box
-    if (e.getKeyCode() == KeyEvent.VK_UP) {
-      testBoxY -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-      testBoxY += 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-      testBoxX -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-      testBoxX += 72;
+    if (e.getKeyCode() == KeyEvent.VK_UP && heroPositionY - 72 >= 0) {
+      heroPositionY -= 72;
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && heroPositionY + 72 < boardHeight) {
+      heroPositionY += 72;
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && heroPositionX - 72 >= 0) {
+      heroPositionX -= 72;
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && heroPositionX + 72 < boardWidth) {
+      heroPositionX += 72;
     }
-
 
     // and redraw to have a new picture with the new coordinates
     repaint();
