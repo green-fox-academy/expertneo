@@ -13,22 +13,7 @@ public class Tile extends AnyObjects {
   BufferedImage path;
   BufferedImage wall;
   char[][] boardMatrix = readBoard("map.txt");
-
-  public char[][] readBoard(String fileName) {
-    Path filePath = Paths.get(fileName);
-    char[][] labirinthLayout = new char[10][10];
-    try {
-      List<String> lines = Files.readAllLines(filePath);
-      for (int i = 0; i < lines.size(); i++) {
-        for (int j = 0; j < lines.get(i).length(); j++) {
-          labirinthLayout[i][j] = lines.get(i).charAt(j);
-        }
-      }
-    } catch (Exception e) {
-      System.out.println("Oh no");
-    }
-    return labirinthLayout;
-  }
+  AnyObjects justACall;
 
   public void drawBoard(Graphics graphics, char[][] boardMatrix) {
     for (int i = 0; i < 10; i++) {
@@ -42,20 +27,5 @@ public class Tile extends AnyObjects {
         }
       }
     }
-  }
-
-  public boolean[][] canWalkthereChecker(String fileName) {
-    char[][] labirinthLayout = readBoard(fileName);
-    boolean[][] canWalkThere = new boolean[10][10];
-    for (int i = 0; i < 10; i++) {
-      for (int j = 0; j < 10; j++) {
-        if (labirinthLayout[i][j] == 'p') {
-          canWalkThere[i][j] = true;
-        } else {
-          canWalkThere[i][j] = false;
-        }
-      }
-    }
-    return canWalkThere;
   }
 }

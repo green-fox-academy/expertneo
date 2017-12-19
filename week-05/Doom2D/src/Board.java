@@ -4,14 +4,29 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Board extends JComponent implements KeyListener {
-  private int heroPositionX;
-  private int heroPositionY;
+  private int initialPositionX;
+  private int initialPositionY;
+  private int skeleton1PosX;
+  private int skeleton1PosY;
+  private int bossPosX;
+  private int bossPosY;
   private int boardWidth = 720;
   private int boardHeight = 720;
+  Hero hero;
+  Monster monster1;
+  Monster boss;
 
   public Board() {
-    heroPositionX = 0;
-    heroPositionY = 0;
+    initialPositionX = 0;
+    initialPositionY = 0;
+    skeleton1PosX = 72 * 5;
+    skeleton1PosY = 72 * 5;
+    bossPosX = 72 * 7;
+    bossPosY = 72 * 7;
+
+    hero = new Hero(initialPositionX, initialPositionY);
+    monster1 = new Monster("skeleton.png", skeleton1PosX, skeleton1PosY);
+    boss = new Monster("boss.png", bossPosX, bossPosY);
 
     // set the size of your draw board
     setPreferredSize(new Dimension(boardWidth, boardHeight));
@@ -26,9 +41,9 @@ public class Board extends JComponent implements KeyListener {
     Tile map = new Tile();
     map.readBoard("map.txt");
     map.drawBoard(graphics, map.readBoard("map.txt"));
-
-    Hero hero = new Hero("bence.png", heroPositionX, heroPositionY);
     hero.draw(graphics);
+    monster1.draw(graphics);
+    boss.draw(graphics);
   }
 
   public static void main(String[] args) {
@@ -60,16 +75,19 @@ public class Board extends JComponent implements KeyListener {
   // But actually we can use just this one for our goals here
   @Override
   public void keyReleased(KeyEvent e) {
-    Hero hero = new Hero("bence.png", heroPositionX, heroPositionY);
     // When the up or down keys hit, we change the position of our box
-    if (e.getKeyCode() == KeyEvent.VK_UP && heroPositionY - 72 >= 0) {
-      heroPositionY -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_DOWN && heroPositionY + 72 < boardHeight) {
-      heroPositionY += 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_LEFT && heroPositionX - 72 >= 0) {
-      heroPositionX -= 72;
-    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT && heroPositionX + 72 < boardWidth) {
-      heroPositionX += 72;
+    if (e.getKeyCode() == KeyEvent.VK_UP) {
+      hero.setPosYUP(boardWidth, boardHeight);
+      hero.setImageUp();
+    } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+      hero.setPosYDOWN(boardWidth, boardHeight);
+      hero.setImageDown();
+    } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+      hero.setPosXLEFT(boardWidth, boardHeight);
+      hero.setImageLeft();
+    } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+      hero.setPosXRIGHT(boardWidth, boardHeight);
+      hero.setImageRight();
     }
 
     // and redraw to have a new picture with the new coordinates
