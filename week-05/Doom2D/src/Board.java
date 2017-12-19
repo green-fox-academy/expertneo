@@ -15,6 +15,7 @@ public class Board extends JComponent implements KeyListener {
   Hero hero;
   Monster monster1;
   Monster boss;
+  int keypresses;
 
   public Board() {
     initialPositionX = 0;
@@ -23,6 +24,7 @@ public class Board extends JComponent implements KeyListener {
     skeleton1PosY = 72 * 5;
     bossPosX = 72 * 7;
     bossPosY = 72 * 7;
+    keypresses = 0;
 
     hero = new Hero(initialPositionX, initialPositionY);
     monster1 = new Monster("skeleton.png", skeleton1PosX, skeleton1PosY);
@@ -41,9 +43,9 @@ public class Board extends JComponent implements KeyListener {
     Tile map = new Tile();
     map.readBoard("map.txt");
     map.drawBoard(graphics, map.readBoard("map.txt"));
-    hero.draw(graphics);
     monster1.draw(graphics);
     boss.draw(graphics);
+    hero.draw(graphics);
   }
 
   public static void main(String[] args) {
@@ -75,6 +77,7 @@ public class Board extends JComponent implements KeyListener {
   // But actually we can use just this one for our goals here
   @Override
   public void keyReleased(KeyEvent e) {
+    keypresses = keypresses + 1;
     // When the up or down keys hit, we change the position of our box
     if (e.getKeyCode() == KeyEvent.VK_UP) {
       hero.setPosYUP(boardWidth, boardHeight);
@@ -88,6 +91,14 @@ public class Board extends JComponent implements KeyListener {
     } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
       hero.setPosXRIGHT(boardWidth, boardHeight);
       hero.setImageRight();
+    }
+
+    if (keypresses % 2 == 0 && boss.canWalkThereChecker("map.txt")[boss.getPosY() / 72 - 1][boss
+            .getPosX() /
+            72]) {
+      boss.setPosYUP(boardWidth, boardHeight);
+    } else if (keypresses % 2 == 0) {
+      boss.setPosYDOWN(boardWidth, boardHeight);
     }
 
     // and redraw to have a new picture with the new coordinates

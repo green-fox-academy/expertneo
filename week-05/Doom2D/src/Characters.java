@@ -23,6 +23,10 @@ public class Characters extends AnyObjects {
     return posX;
   }
 
+  public int getPosY() {
+    return posY;
+  }
+
   public void setPosXLEFT(int totalWidth, int totalHeight){
     if (posX - 72 >= 0 && canWalkThereChecker("map.txt")[posY / 72][posX / 72 - 1]) {
       this.posX = posX - 72;
