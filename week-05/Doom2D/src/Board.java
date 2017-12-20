@@ -40,9 +40,16 @@ public class Board extends JComponent implements KeyListener {
     Tile map = new Tile();
     map.readBoard("map.txt");
     map.drawBoard(graphics, map.readBoard("map.txt"));
-    monster1.draw(graphics);
-    monster2.draw(graphics);
-    boss.draw(graphics);
+
+    if (!monster1.isDead) {
+      monster1.draw(graphics);
+    }
+    if (!monster2.isDead) {
+      monster2.draw(graphics);
+    }
+    if (!boss.isDead) {
+      boss.draw(graphics);
+    }
     hero.draw(graphics);
   }
 
@@ -92,23 +99,39 @@ public class Board extends JComponent implements KeyListener {
       hero.setImageRight();
     }
 
-    if (keypresses % 2 == 0 && randomNumber <= 0.25) {
-      boss.setPosYUP(boardWidth, boardHeight);
-      monster1.setPosYUP(boardWidth, boardHeight);
-      monster2.setPosYUP(boardWidth, boardHeight);
-    } else if (keypresses % 2 == 0 && 0.25 < randomNumber && randomNumber < 0.5 ) {
-      boss.setPosYDOWN(boardWidth, boardHeight);
-      monster1.setPosYDOWN(boardWidth, boardHeight);
-      monster2.setPosYDOWN(boardWidth, boardHeight);
-    } else if (keypresses % 2 == 0 && 0.5 < randomNumber && randomNumber < 0.75 ) {
-      boss.setPosXLEFT(boardWidth, boardHeight);
-      monster1.setPosXLEFT(boardWidth, boardHeight);
-      monster2.setPosXLEFT(boardWidth, boardHeight);
-    } else if (keypresses % 2 == 0 && 0.75 <= randomNumber) {
-      boss.setPosXRIGHT(boardWidth, boardHeight);
-      monster1.setPosXRIGHT(boardWidth, boardHeight);
-      monster2.setPosXRIGHT(boardWidth, boardHeight);
+    if (keypresses % 2 == 0) {
+      boss.randomMove(boardWidth, boardHeight);
+      monster1.randomMove(boardWidth, boardHeight);
+      monster2.randomMove(boardWidth, boardHeight);
+    } else if (keypresses % 2 == 0) {
+      boss.randomMove(boardWidth, boardHeight);
+      monster1.randomMove(boardWidth, boardHeight);
+      monster2.randomMove(boardWidth, boardHeight);
+    } else if (keypresses % 2 == 0) {
+      boss.randomMove(boardWidth, boardHeight);
+      monster1.randomMove(boardWidth, boardHeight);
+      monster2.randomMove(boardWidth, boardHeight);
+    } else if (keypresses % 2 == 0) {
+      boss.randomMove(boardWidth, boardHeight);
+      monster1.randomMove(boardWidth, boardHeight);
+      monster2.randomMove(boardWidth, boardHeight);
     }
+
+    if (e.getKeyCode() == KeyEvent.VK_SPACE) {
+      int variableX = hero.getPosX();
+      int variableY = hero.getPosY();
+      if (monster1.getPosX() == variableX && monster1.getPosY() == variableY) {
+      monster1.setIsDead();
+      hero.setLevel(hero.getLevel() + 1);
+      } else if (monster2.getPosX() == variableX && monster2.getPosY() == variableY) {
+        monster2.setIsDead();
+        hero.setLevel(hero.getLevel() + 1);
+      } else if (boss.getPosX() == variableX && boss.getPosY() == variableY) {
+        boss.setIsDead();
+        hero.setLevel(hero.getLevel() + 1);
+      }
+    }
+
     // and redraw to have a new picture with the new coordinates
     repaint();
   }

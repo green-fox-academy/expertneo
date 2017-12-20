@@ -1,17 +1,8 @@
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 
 public class Tile extends AnyObjects {
   boolean isWall;
 
-  BufferedImage path;
-  BufferedImage wall;
   char[][] boardMatrix = readBoard("map.txt");
   AnyObjects justACall;
 

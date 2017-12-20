@@ -1,8 +1,4 @@
 import java.awt.image.BufferedImage;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
 
 public class Characters extends AnyObjects {
   int level;
@@ -13,6 +9,7 @@ public class Characters extends AnyObjects {
   boolean isDead;
   int posX, posY;
   BufferedImage image;
+
   Tile ads;
   AnyObjects justACall;
   Hero hero;
@@ -66,4 +63,23 @@ public class Characters extends AnyObjects {
     }
     return canWalkThere;
   }
+
+  public void combat() {
+  }
+
+  public void setIsDead() {
+    this.isDead = true;
+  }
+
+  public void setLevel(int level) {
+    this.level = level;
+  }
+
+  public int getLevel() {
+    return level;
+  }
+
+//  public int[][] randomPosition() {
+//
+//  }
 }

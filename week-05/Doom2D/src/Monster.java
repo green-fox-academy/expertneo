@@ -30,4 +30,17 @@ public class Monster extends Characters {
       graphics.drawImage(image, posX, posY, null);
     }
   }
+
+  public void randomMove(int width, int height) {
+    double randomNumber = Math.random();
+    if (randomNumber <= 0.25) {
+      setPosYUP(width, height);
+    } else if (0.25 < randomNumber && randomNumber < 0.5) {
+      setPosYDOWN(width, height);
+    } else if (0.5 < randomNumber && randomNumber < 0.75) {
+      setPosXLEFT(width, height);
+    } else if (0.75 <= randomNumber) {
+      setPosXRIGHT(width, height);
+    }
+  }
 }
