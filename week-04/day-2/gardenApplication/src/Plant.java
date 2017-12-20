@@ -1,17 +1,17 @@
 import java.awt.*;
 
 public class Plant {
-  private Color color;
+  private String color;
   int waterStatus;
   boolean needWater;
 
-  public Plant (Color color, int waterStatus){
+  public Plant (String color, int waterStatus){
     this.color = color;
     this.waterStatus = waterStatus;
   }
 
   public Plant () {
-    this.color = Color.green;
+    this.color = "green";
     this.waterStatus = 0;
   }
 
@@ -23,7 +23,7 @@ public class Plant {
     this.waterStatus = waterStatus;
   }
 
-  public Color getColor (){
+  public String getColor (){
     return this.color;
   }
 }

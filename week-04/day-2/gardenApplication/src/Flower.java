@@ -4,13 +4,13 @@ import java.util.concurrent.Flow;
 public class Flower extends Plant {
   String type;
 
-  public Flower (Color color, int waterStatus) {
+  public Flower (String color, int waterStatus) {
     super(color, waterStatus);
     this.type = "Flower";
   }
 
   public Flower () {
-    super(Color.green, 0);
+    super("green", 0);
     this.type = "Flower";
   }
 

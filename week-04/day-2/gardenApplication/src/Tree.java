@@ -3,13 +3,13 @@ import java.awt.*;
 public class Tree extends Plant {
   String type;
 
-  public Tree (Color color, int waterStatus) {
+  public Tree (String color, int waterStatus) {
     super(color, waterStatus);
     this.type = "Tree";
   }
 
   public Tree () {
-    super(Color.green, 0);
+    super("green", 0);
     this.type = "Tree";
   }
 

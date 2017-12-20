@@ -8,6 +8,7 @@ public class Hero extends Characters {
   int level;
   Image image;
 
+
   public Hero() {
   }
 
@@ -15,11 +16,11 @@ public class Hero extends Characters {
     this.posX = posX;
     this.posY = posY;
     this.level = 1;
-    this.maxHP = 1000;
+    this.maxHP = 20 + 3 * ((int) (Math.random()*10) - 4);
     this.currentHP = maxHP;
     this.isDead = false;
-    this.defense = 100;
-    this.attackPower = 100;
+    this.defense = 2 * ((int) (Math.random()*10) - 4) ;
+    this.attackPower = 5 + ((int) (Math.random()*10) - 4);
     try {
       image = ImageIO.read(new File("hero-down.png"));
     } catch (IOException e) {

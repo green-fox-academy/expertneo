@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class Characters extends AnyObjects {
+  int level;
   int currentHP;
   int maxHP;
   int defense;

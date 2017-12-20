@@ -10,13 +10,14 @@ public class Monster extends Characters {
   }
 
   public Monster(String filename, int posX, int posY) {
+    this.level = 1;
     this.posX = posX;
     this.posY = posY;
-    this.maxHP = 100;
+    this.maxHP = 2 * level * ((int) (Math.random()*10) - 4);
     this.currentHP = maxHP;
     this.isDead = false;
-    this.defense = 10;
-    this.attackPower = 10;
+    this.defense = level / 2 * ((int) (Math.random()*10) - 4);
+    this.attackPower = level * ((int) (Math.random()*10) - 4);
     try {
       image = ImageIO.read(new File(filename));
     } catch (IOException e) {

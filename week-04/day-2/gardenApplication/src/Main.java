@@ -5,11 +5,11 @@ public class Main {
   public static void main(String[] args) {
 
     Garden kert = new Garden();
-    Flower flower1 = new Flower(Color.yellow, 0);
-    Flower flower2 = new Flower(Color.blue, 0);
+    Flower flower1 = new Flower("Yellow", 0);
+    Flower flower2 = new Flower("Blue", 0);
 
-    Tree tree1 = new Tree(Color.blue, 0);
-    Tree tree2 = new Tree(Color.red, 0);
+    Tree tree1 = new Tree("Blue", 0);
+    Tree tree2 = new Tree("Red", 0);
 
     kert.addFlower(flower1);
     kert.addFlower(flower2);
