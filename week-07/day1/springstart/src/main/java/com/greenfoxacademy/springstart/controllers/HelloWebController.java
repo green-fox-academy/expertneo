@@ -5,11 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 
 @Controller
 public class HelloWebController {
-  int counter = 0;
-  int randomNumber;
+  AtomicLong newAtomicNumber = new AtomicLong();
+
   String[] hellos = {"Mirëdita", "Ahalan", "Parev", "Zdravei", "Nei Ho", "Dobrý den", "Ahoj", "Goddag", "Goede dag, Hallo", "Hello", "Saluton", "Hei", "Bonjour",
           "Guten Tag", "Gia'sou", "Aloha", "Shalom", "Namaste", "Namaste", "Jó napot", "Halló", "Helló", "Góðan daginn", "Halo", "Aksunai", "Qanuipit", "Dia dhuit",
           "Salve", "Ciao", "Kon-nichiwa", "An-nyong Ha-se-yo", "Salvëte", "Ni hao", "Dzien' dobry", "Olá", "Bunã ziua", "Zdravstvuyte", "Hola", "Jambo", "Hujambo", "Hej",
@@ -23,13 +25,12 @@ public class HelloWebController {
     if (content == null) {
       model.addAttribute("hello", " Hello");
       model.addAttribute("name", " World");
-      model.addAttribute("counter", counter);
+      model.addAttribute("counter", newAtomicNumber.incrementAndGet());
     } else {
       model.addAttribute("hello", hellos[randomNumber]);
       model.addAttribute("name", content);
-      model.addAttribute("counter", counter);
+      model.addAttribute("counter", newAtomicNumber.incrementAndGet());
     }
-    counter = counter + 1;
     return "greeting";
   }
 }
