@@ -1,0 +1,14 @@
+EXERCISE: https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/
+
+Q1
+SELECT title
+FROM Movie
+WHERE director="Steven Spielberg";
+
+Q2
+SELECT DISTINCT year
+FROM Movie
+JOIN Rating
+    on Movie.mID=Rating.mID
+WHERE stars>=4
+ORDER BY year asc;
