@@ -7,12 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
 public class BankingWebController {
-  static ArrayList<BankAccount> listOfBankAccounts = new ArrayList<>();
-  BankAccount newBankAccount = new BankAccount("Simba", 2000.00, "lion", true);
+  static ArrayList<BankAccount> listOfBankAccounts = new ArrayList<>(Arrays.asList(
+          new BankAccount("Nala", 4000.00, "lion", false, false),
+          new BankAccount("Scar", 3000.00, "lion", true, true ),
+          new BankAccount("Mufasa", 1000.00, "lion", false, false),
+          new BankAccount("Rafiki", 20.00, "ape", false, true),
+          new BankAccount("Zazu", 200.00, "parrot", true, false)
+  ));
+  BankAccount newBankAccount = new BankAccount("Simba", 2000.00, "lion", true, true);
 
 
   @RequestMapping("/web/show")
@@ -32,11 +39,6 @@ public class BankingWebController {
 
   @RequestMapping("/web/showTable")
   public String showList(Model model) {
-    listOfBankAccounts.add(new BankAccount("Nala", 4000.00, "lion", false));
-    listOfBankAccounts.add(new BankAccount("Scar", 3000.00, "lion", true));
-    listOfBankAccounts.add(new BankAccount("Mufasa", 1000.00, "lion", false));
-    listOfBankAccounts.add(new BankAccount("Rafiki", 20.00, "ape", false));
-    listOfBankAccounts.add(new BankAccount("Zazu", 200.00, "parrot", true));
     model.addAttribute("accountList", listOfBankAccounts);
     return "templateList";
   }
