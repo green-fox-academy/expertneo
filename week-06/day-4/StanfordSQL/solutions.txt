@@ -1,14 +1,21 @@
 EXERCISE: https://lagunita.stanford.edu/courses/DB/SQL/SelfPaced/courseware/ch-sql/seq-exercise-sql_movie_query_core/
 
-Q1
+Q1 (Find the titles of all movies directed by Steven Spielberg. )
 SELECT title
 FROM Movie
 WHERE director="Steven Spielberg";
 
-Q2
+Q2 (Find the titles of all movies that have no ratings. )
 SELECT DISTINCT year
 FROM Movie
 JOIN Rating
     on Movie.mID=Rating.mID
 WHERE stars>=4
 ORDER BY year asc;
+
+Q3 (Find the titles of all movies that have no ratings.)
+SELECT DISTINCT title
+FROM Movie
+LEFT JOIN Rating
+    on Movie.mID=Rating.mID
+WHERE stars IS NULL;
