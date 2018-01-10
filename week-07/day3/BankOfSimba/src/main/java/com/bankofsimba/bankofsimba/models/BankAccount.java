@@ -2,16 +2,26 @@ package com.bankofsimba.bankofsimba.models;
 
 public class BankAccount {
   String name;
-  int balance;
+  double balance;
   String animalType;
+  boolean king;
 
   public BankAccount() {
   }
 
-  public BankAccount(String name, int balance, String animalType) {
+  public BankAccount(String name, double balance, String animalType, boolean king) {
     this.name = name;
     this.balance = balance;
     this.animalType = animalType;
+    this.king = king;
+  }
+
+  public boolean isKing() {
+    return king;
+  }
+
+  public void setKing(boolean king) {
+    this.king = king;
   }
 
   public String getName() {
@@ -22,11 +32,11 @@ public class BankAccount {
     this.name = name;
   }
 
-  public int getBalance() {
+  public double getBalance() {
     return balance;
   }
 
-  public void setBalance(int balance) {
+  public void setBalance(double balance) {
     this.balance = balance;
   }
 

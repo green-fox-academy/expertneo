@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Thymeleaf Exercise #</title>
+        <link rel="stylesheet" th:href="@{/style.css}" />
+        <meta charset="utf-8" />
+    </head>
+    <tbody>
+        <table style="width: 100%">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Balance</th>
+                <th>Animal Type</th>
+                <th>isKing?!</th>
+            </tr>
+            <tr th:each="BankAccount: ${accountList}">
+                <td th:text="${BankAccountStat.count}" />
+                <td th:text="${BankAccount.name}" />
+                <td th:text="${BankAccount.balance}" />
+                <td th:text="${BankAccount.animalType}" />
+                <td th:if="BankAccountStat.king == true" th:text="'king'"/>
+            </tr>
+        </table>
+    </tbody>
+</html>

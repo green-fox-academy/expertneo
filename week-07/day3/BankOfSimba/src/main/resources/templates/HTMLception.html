@@ -6,9 +6,9 @@
     <meta charset="utf-8" />
 </head>
 <body>
-<br th:text="'Name: ' + ${bankName}"/>
-<br th:text="'Balance: ' + ${#numbers.formatDecimal(bankBalance, 0, 'DEFAULT', 2, 'DEFAULT')}
-                + ' Zebra'"/>
-<br th:text="'Animal Type: ' + ${bankAnimalType}"/>
+    <br th:text="'Using th:utext'" />
+    <br th:utext="${stringException}"/>
+    <br th:text="'Using th:text'" />
+    <br th:text="${stringException}"/>
 </body>
 </html>
