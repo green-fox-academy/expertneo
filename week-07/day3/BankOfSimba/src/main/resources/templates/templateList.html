@@ -27,12 +27,18 @@
                     <td th:text="${#numbers.formatDecimal(BankAccount.balance, 0, 'DEFAULT', 2, 'DEFAULT')
                         } + ' Zebra'" />
                     <td th:text="${BankAccount.animalType}" />
+
                     <td style="background-color: gold" th:if="${BankAccount.king}"
                     th:text="'king'" />
                     <td th:unless="${BankAccount.king}" th:text="''" />
+
                     <td th:switch="${BankAccount.badGuy}">
                         <p th:case="true">Bad guy</p>
                         <p th:case="false">Good One</p>
+                    </td>
+                    <td>
+                        <button type="submit" name="raise"
+                                th:value="BankAccountStat.count">Raise</button>
                     </td>
                 </tr>
             </tbody>

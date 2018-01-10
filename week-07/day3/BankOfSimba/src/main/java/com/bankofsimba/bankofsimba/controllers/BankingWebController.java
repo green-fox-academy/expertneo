@@ -42,4 +42,13 @@ public class BankingWebController {
     model.addAttribute("accountList", listOfBankAccounts);
     return "templateList";
   }
+
+  public void increment(BankAccount bankAccount) {
+    if (bankAccount.isKing()) {
+      bankAccount.setBalance(bankAccount.getBalance()+100);
+    } else  {
+      bankAccount.setBalance(bankAccount.getBalance()+10);
+    }
+
+  }
 }
