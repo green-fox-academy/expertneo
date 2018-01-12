@@ -3,12 +3,13 @@ package com.bankofsimba.bankofsimba.controllers;
 import com.bankofsimba.bankofsimba.models.BankAccount;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 @Controller
 public class BankingWebController {
@@ -43,12 +44,19 @@ public class BankingWebController {
     return "templateList";
   }
 
-  public void increment(BankAccount bankAccount) {
-    if (bankAccount.isKing()) {
-      bankAccount.setBalance(bankAccount.getBalance()+100);
-    } else  {
-      bankAccount.setBalance(bankAccount.getBalance()+10);
-    }
+  @RequestMapping(value = "/web/showTable", params = {"raise"})
+  public String raise(final HttpServletRequest request) {
+    final Integer accountIndex = Integer.valueOf(request.getParameter("raise"));
 
+    BankAccount account = listOfBankAccounts.get(accountIndex);
+    double balance = account.getBalance();
+
+    if (account.isKing()) {
+      balance += 100;
+    } else {
+      balance += 10;
+    }
+    account.setBalance(balance);
+    return  "redirect:showTable";
   }
 }

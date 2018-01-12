@@ -5,43 +5,47 @@
         <link rel="stylesheet" th:href="@{/style.css}" />
         <meta charset="utf-8" />
     </head>
-    <tbody>
-        <table style="width: 100%; height: 250px">
-            <thead>
-                <tr style="background-color: greenyellow; font-size: x-large">
-                    <th></th>
-                    <th>Name</th>
-                    <th>Balance</th>
-                    <th>Animal Type</th>
-                    <th>isKing?!</th>
-                    <th>isBadGuy?!</th>
-                </tr>
-            </thead>
+    <body>
+        <form action="#" th:action="@{/web/showTable}" method="post"
+              th:object="${listOfBankAccounts}">
+            <table style="width: 100%; height: 250px">
+                <thead>
+                    <tr style="background-color: greenyellow; font-size: x-large">
+                        <th></th>
+                        <th>Name</th>
+                        <th>Balance</th>
+                        <th>Animal Type</th>
+                        <th>isKing?!</th>
+                        <th>isBadGuy?!</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                <tr align="center" style="background-color: grey; font-size: large; color: white"
-                    th:each="BankAccount:
-                    ${accountList}">
-                    <td th:text="${BankAccountStat.count}" />
-                    <td th:text="${BankAccount.name}" />
-                    <td th:text="${#numbers.formatDecimal(BankAccount.balance, 0, 'DEFAULT', 2, 'DEFAULT')
-                        } + ' Zebra'" />
-                    <td th:text="${BankAccount.animalType}" />
+                <tbody>
+                    <tr align="center" style="background-color: grey; font-size: large; color: white"
+                        th:each="BankAccount:
+                        ${accountList}">
+                        <td th:text="${BankAccountStat.count}" />
+                        <td th:text="${BankAccount.name}" />
+                        <td th:text="${#numbers.formatDecimal(BankAccount.balance, 0, 'WHITESPACE',
+                         2, 'DEFAULT')
+                            } + ' Zebra'" />
+                        <td th:text="${BankAccount.animalType}" />
 
-                    <td style="background-color: gold" th:if="${BankAccount.king}"
-                    th:text="'king'" />
-                    <td th:unless="${BankAccount.king}" th:text="''" />
+                        <td style="background-color: gold" th:if="${BankAccount.king}"
+                        th:text="'king'" />
+                        <td th:unless="${BankAccount.king}" th:text="''" />
 
-                    <td th:switch="${BankAccount.badGuy}">
-                        <p th:case="true">Bad guy</p>
-                        <p th:case="false">Good One</p>
-                    </td>
-                    <td>
-                        <button type="submit" name="raise"
-                                th:value="BankAccountStat.count">Raise</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </tbody>
+                        <td th:switch="${BankAccount.badGuy}">
+                            <p th:case="true">Bad guy</p>
+                            <p th:case="false">Good One</p>
+                        </td>
+                        <td>
+                            <button type="submit" name="raise"
+                                    th:value="${BankAccountStat.index}">Raise</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </body>
 </html>
