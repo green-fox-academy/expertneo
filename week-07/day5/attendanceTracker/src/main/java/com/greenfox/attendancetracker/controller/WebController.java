@@ -46,9 +46,9 @@ public class WebController {
 
   @RequestMapping(value = "/web/showTable", params = {"raiseLate"})
   public String raiseLate(final HttpServletRequest request) {
-    final Integer accountIndex = Integer.valueOf(request.getParameter("raiseLate"));
+    final Integer personIndex = Integer.valueOf(request.getParameter("raiseLate"));
 
-    People person = listOfPeople.get(accountIndex);
+    People person = listOfPeople.get(personIndex);
     int late = person.getLate();
 
     if (person.isFired()) {
@@ -66,9 +66,9 @@ public class WebController {
 
   @RequestMapping(value = "/web/showTable", params = {"raiseDayOff"})
   public String raiseDayOff(final HttpServletRequest request) {
-    final Integer accountIndex = Integer.valueOf(request.getParameter("raiseDayOff"));
+    final Integer personIndex = Integer.valueOf(request.getParameter("raiseDayOff"));
 
-    People person = listOfPeople.get(accountIndex);
+    People person = listOfPeople.get(personIndex);
     int dayOff = person.getDayOff();
 
     if (person.isFired()) {
