@@ -77,7 +77,7 @@ public class WebController {
       dayOff += 1;
     }
 
-    if (person.getLate() > 8 || person.getDayOff() > 1) {
+    if (person.getLate() < 11 || person.getDayOff() > 1) {
       person.setFired(true);
     }
     person.setDayOff(dayOff);
