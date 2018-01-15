@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>TODO app Early Access</title>
+    </head>
+    <body>
+        <h1>Bence's todo application (Early Access)</h1>
+        <h2>TODOS FOR TODAY:</h2>
+        <table style="width: 100%; height: 250px">
+            <thead>
+                <tr style="background-color: greenyellow; font-size: x-large">
+                    <th>ID</th>
+                    <th>ACTION</th>
+                    <th>DONE</th>
+                    <th>URGENT</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr align="center" style="background-color: grey; font-size: large; color: white"
+                    th:each="todo : ${todos}">
+                    <td th:text="${todo.id}" />
+                    <td th:text="${todo.title}" />
+                    <td th:text="${todo.isDone()}" />
+                    <td th:text="${todo.isUrgent()}" />
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
