@@ -40,19 +40,19 @@ public class ToDo {
     this.title = title;
   }
 
-  public boolean isUrgent() {
+  public boolean getIsUrgent() {
     return isUrgent;
   }
 
-  public void setUrgent(boolean urgent) {
+  public void setIsUrgent(boolean urgent) {
     isUrgent = urgent;
   }
 
-  public boolean isDone() {
+  public boolean getIsDone() {
     return isDone;
   }
 
-  public void setDone(boolean done) {
+  public void setIsDone(boolean done) {
     isDone = done;
   }
 }

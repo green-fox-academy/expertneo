@@ -7,6 +7,9 @@
     <body>
         <h1>Bence's todo application (Early Access)</h1>
         <h2>TODOS FOR TODAY:</h2>
+        <h3>
+            <a href="/todo/add">Add TODO</a>
+        </h3>
         <table style="width: 100%; height: 250px">
             <thead>
                 <tr style="background-color: greenyellow; font-size: x-large">
@@ -22,8 +25,19 @@
                     th:each="todo : ${todos}">
                     <td th:text="${todo.id}" />
                     <td th:text="${todo.title}" />
-                    <td th:text="${todo.isDone()}" />
-                    <td th:text="${todo.isUrgent()}" />
+                    <td th:text="${todo.isDone}" />
+                    <td th:text="${todo.isUrgent}" />
+                    <form action="#" th:action="@{/todo/}" method="post"
+                          th:object="${todos}">
+                        <td>
+                            <button type="submit" name="delete"
+                                    th:value="${todo.id}">Delete</button>
+                        </td>
+                        <td>
+                            <button type="submit" name="edit"
+                                    th:value="${todo.id}">Edit</button>
+                        </td>
+                    </form>
                 </tr>
             </tbody>
         </table>

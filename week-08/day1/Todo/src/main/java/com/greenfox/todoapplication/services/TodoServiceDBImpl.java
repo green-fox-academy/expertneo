@@ -34,14 +34,14 @@ public class TodoServiceDBImpl implements TodoService {
   @Override
   public void setDone(Integer id, boolean input) {
     ToDo todo = todoRepository.findOne(id);
-    todo.setDone(input);
+    todo.setIsDone(input);
     todoRepository.save(todo);
   }
 
   @Override
   public void setUrgent(Integer id, boolean input) {
     ToDo todo = todoRepository.findOne(id);
-    todo.setUrgent(input);
+    todo.setIsUrgent(input);
     todoRepository.save(todo);
   }
 

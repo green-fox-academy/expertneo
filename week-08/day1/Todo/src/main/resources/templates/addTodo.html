@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>TODO app Early Access</title>
+    </head>
+    <body>
+        <h1>Bence's todo application (Early Access)</h1>
+        <h2>ENTER THE TODO</h2>
+        <form action="#" th:action="@{/todo/add}" th:object="${todo}" method="post">
+            <input type="text" name="topic" placeholder="Todo text..." th:field="*{title}"/>
+            <div>
+                 Done?
+                <input type="checkbox" name="isDone" th:field="*{isDone}"/>
+            </div>
+            <div>
+                 Urgent?
+                <input type="checkbox" name="isUrgent" th:field="*{isUrgent}"/>
+            </div>
+            <input type="submit" value="add"/>
+        </form>
+    </body>
+</html>
