@@ -49,4 +49,11 @@ public class TodoServiceDBImpl implements TodoService {
   public void delete(Integer id) {
     todoRepository.delete(id);
   }
+
+  @Override
+  public void setTitle(Integer id, String string) {
+    ToDo todo = todoRepository.findOne(id);
+    todo.setTitle(string);
+    todoRepository.save(todo);
+  }
 }

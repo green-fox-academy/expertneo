@@ -33,6 +33,9 @@
                             <button type="submit" name="delete"
                                     th:value="${todo.id}">Delete</button>
                         </td>
+                    </form>
+                    <form action="#" th:action="@{/todo/edit}" method="post"
+                          th:object="${todos}">
                         <td>
                             <button type="submit" name="edit"
                                     th:value="${todo.id}">Edit</button>

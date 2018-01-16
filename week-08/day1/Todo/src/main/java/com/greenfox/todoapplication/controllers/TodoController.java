@@ -48,7 +48,7 @@ public class TodoController {
   }
 
   @GetMapping("/add")
-  public String add(Model model){
+  public String showAdd(Model model){
     ToDo todo = new ToDo();
     model.addAttribute("todo", todo);
     return "addTodo";
@@ -67,10 +67,23 @@ public class TodoController {
     return "redirect:/todo/";
   }
 
-  @RequestMapping(value = "/", params = {"delete"})
-  public String deleteTodo(final HttpServletRequest request) {
-    final Integer todoIndex = Integer.valueOf(request.getParameter("delete"));
-    todoService.delete(todoIndex);
+  @GetMapping("/edit")
+  public String showEditToDo(Model model,
+                        @PathVariable(value = "edit") Integer id){
+    model.addAttribute("todo", todoService.getTodo(id));
+    return "editTodo";
+  }
+
+
+  @PostMapping(value = {"/edit"})
+  public String editToDo(Model model,
+                         @PathVariable(value = "edit") Integer id,
+                         HttpServletRequest request) {
+    ToDo todo = todoService.getTodo(id);
+    todo.setTitle(request.getParameter("topic"));
+    todo.setIsDone(Boolean.parseBoolean(request.getParameter("isDone")));
+    todo.setIsUrgent(Boolean.parseBoolean(request.getParameter("isUrgent")));
+    todoService.create(todo);
     return "redirect:/todo/";
   }
 }
