@@ -9,10 +9,14 @@ import com.greenfox.frontend.models.DoUntil.DoUntilFactor;
 import com.greenfox.frontend.models.DoUntil.DoUntilGetter;
 import com.greenfox.frontend.models.DoUntil.DoUntilSum;
 import com.greenfox.frontend.models.LogEntries.Log;
+import com.greenfox.frontend.models.LogEntries.LogOutput;
 import com.greenfox.frontend.repositories.LogRepository;
 import com.greenfox.frontend.services.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 @org.springframework.web.bind.annotation.RestController
 public class RestController {
@@ -104,7 +108,7 @@ public class RestController {
     } else if (arrayInput.getWhat().equals("double")) {
       Log logCreated = new Log();
       logCreated.setEndpoint("/arrays");
-      logCreated.setDataInput("input: double " + arrayInput.getNumbers());
+      logCreated.setDataInput("input: double " + String.valueOf(Arrays.asList(arrayInput.getNumbers())));
       logService.createLog(logCreated);
       return new ArrayDouble(arrayInput.getNumbers());
     } else {
@@ -127,6 +131,12 @@ public class RestController {
 
   @GetMapping("/log")
   public Object log() {
-    return logService.getAllLogs();
+    Log logCreated = new Log();
+    logCreated.setEndpoint("/log");
+    logCreated.setDataInput("input: no input (get)");
+    logService.createLog(logCreated);
+
+    LogOutput logOutput = new LogOutput(logService.getAllLogs(), logService.getAllLogs().size());
+    return logOutput;
   }
 }
