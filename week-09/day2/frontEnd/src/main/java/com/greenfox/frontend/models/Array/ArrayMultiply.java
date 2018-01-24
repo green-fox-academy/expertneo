@@ -6,7 +6,7 @@ public class ArrayMultiply {
   @JsonIgnore
   Integer[] input;
 
-  Integer result = 0;
+  Integer result = 1;
 
   public ArrayMultiply() {
   }
