@@ -21,6 +21,6 @@ public class WebController {
     return "index";
   }
 
-  @PostMapping("/shoppingplanner/results")
-  public String clickOnTheButton
+//  @PostMapping("/shoppingplanner/results")
+//  public String clickOnTheButton
 }
