@@ -1,8 +1,11 @@
-package com.greenfox.reporting.models;
+package com.greenfox.reporting.models.Report;
+
+import com.greenfox.reporting.models.FollowUp.FollowUp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Entity
@@ -11,6 +14,8 @@ public class Report {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long reportId;
   private boolean isActive;
+  private final List<String> categories = new ArrayList<>(Arrays.asList("Service Quality",
+          "Health And Safety"));
   private String category;
   private String title;
   private String body;
@@ -19,7 +24,7 @@ public class Report {
   private String dueDate;
   private String timeStampOfTheReport;
 
-  @ManyToOne
+  @OneToMany (mappedBy = "report")
   List<FollowUp> followUps = new ArrayList<>();
 
   public Report() {
@@ -27,9 +32,11 @@ public class Report {
     this.isActive = true;
   }
 
-  public Report(String category, String title, String body, String actionItem, String eventDate, String dueDate) {
+  public Report(int categorySelector, String title, String body, String actionItem, String
+          eventDate,
+                String dueDate) {
     this.isActive = true;
-    this.category = category;
+    this.category = categories.get(categorySelector);
     this.title = title;
     this.body = body;
     this.actionItem = actionItem;
@@ -52,6 +59,10 @@ public class Report {
 
   public void setActive(boolean active) {
     isActive = active;
+  }
+
+  public List<String> getCategories() {
+    return categories;
   }
 
   public String getCategory() {

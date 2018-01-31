@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Exam of BPapp</title>
+    </head>
+    <body>
+        <form action="/search" method="get">
+            <input type="text" name="q" th:placeholder="${searchValue}"/>
+            <input type="submit" value="SEARCH"/>
+        </form>
+        <span>
+            <a href="/search?police=1">Police cars only</a>
+        </span>
+        <span>
+            <a href="/search?diplomat=1">Diplomats only</a>
+        </span>
+        <div th:if="${validator}">
+            <table>
+                <thead>
+                <tr>
+                    <th style="text-align: center">Plate</th>
+                    <th style="text-align: center">Brand</th>
+                    <th style="text-align: center">Model</th>
+                    <th style="text-align: center">Color</th>
+                    <th style="text-align: center">Year</th>
+                </tr>
+                </thead>
+                <tbody class="text-center">
+                <tr th:each="licencePlate : ${licencePlates}">
+                    <td th:text="${licencePlate.plate}"/>
+                    <td>
+                        <a th:href="@{/search/} + ${licencePlate.carBrand}"
+                           th:text="${licencePlate.carBrand}"/>
+                    </td>
+                    <td th:text="${licencePlate.carModel}"/>
+                    <td th:text="${licencePlate.year}"/>
+                    <td th:text="${licencePlate.color}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:unless="${validator}">
+            <p style="color: red">Sorry, the submitted licence plate is not valid</p>
+        </div>
+    <script src="/webjars/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    </body>
+</html>

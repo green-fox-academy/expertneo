@@ -1,4 +1,6 @@
-package com.greenfox.reporting.models;
+package com.greenfox.reporting.models.FoxUser;
+
+import com.greenfox.reporting.models.Report.Report;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -13,7 +15,7 @@ public class FoxUser {
   private String email;
   private int age;
 
-  @OneToMany
+  @OneToMany (mappedBy = "user")
   List<Report> reports = new ArrayList<>();
 
 

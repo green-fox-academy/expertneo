@@ -1,4 +1,4 @@
-package com.greenfox.reporting.models;
+package com.greenfox.reporting.models.FollowUp;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
