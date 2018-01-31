@@ -48,6 +48,7 @@ public class WebController {
   @GetMapping("/search/{brand}")
   public String searchByBrand(Model model, @PathVariable (required = false) String brand) {
     model.addAttribute("licencePlates", licencePlateService.getAllByCarBrand(brand));
+    model.addAttribute("validator", true);
     return "main";
   }
 

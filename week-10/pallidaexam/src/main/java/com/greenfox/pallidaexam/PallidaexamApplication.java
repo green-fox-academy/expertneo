@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PallidaexamApplication {
+public class PallidaExamApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PallidaexamApplication.class, args);
+		SpringApplication.run(PallidaExamApplication.class, args);
 	}
 }
