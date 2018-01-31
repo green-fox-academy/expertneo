@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+        <title>Retake Exam: Pallida</title>
+
+</head>
+<body>
+    <div>
+        <h1>Green Fox Fashion Web Store</h1>
+        <form th:action="@{/shoppingplanner/results}" th:object="${item}" method="post">
+            <select th:field="${uniqueItemNames}">
+                <option value="">Select item name</option>
+                <option value="" th:value="${uniqueItemName}" th:each="uniqueItemName : ${uniqueItemNames}"
+                        th:text="${uniqueItemName}"></option>
+            </select>
+            <select th:field="${uniqueItemSizes}">
+                <option value="">Select size</option>
+                <option th:value="${uniqueSize}"
+                        th:each="uniqueItemSize : ${uniqueItemSizes}"
+                        th:text="${uniqueItemSize}"></option>
+            </select>
+            <input type="text" name="Quantity" th:field="*{quantity}"/>
+            <input type="submit" value="Add"/>
+        </form>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>Item name</th>
+                <th>Manufacturer</th>
+                <th>Category</th>
+                <th>Size</th>
+                <th>Unit Price</th>
+            </tr>
+            <tbody>
+            <tr th:each="item : ${items}">
+                <td th:text="${item.itemName}"></td>
+                <td th:text="${item.manufacturer}"></td>
+                <td th:text="${item.category}"></td>
+                <td th:text="${item.size}"></td>
+                <td th:text="${item.unitPrice}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
