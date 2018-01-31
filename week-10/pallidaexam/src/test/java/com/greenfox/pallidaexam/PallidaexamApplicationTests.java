@@ -54,24 +54,21 @@ public class PallidaExamApplicationTests {
 		String brand = "Audi";
 		LicencePlateDTO testTDO = new LicencePlateDTO();
 		testTDO.setResult("ok");
-//		List<LicencePlate> testCars = new ArrayList<>();
-//		LicencePlate testCarOne = new LicencePlate();
-//		testCarOne.setCarBrand("Audi");
-//		testCarOne.setCarModel("S4");
-//		testCarOne.setColor("Indigo");
-//		testCarOne.setYear("2013");
-//		testCarOne.setPlate("KNV-421");
-//
-//		LicencePlate testCarTwo = new LicencePlate();
-//		testCarOne.setCarBrand("Audi");
-//		testCarOne.setCarModel("R8");
-//		testCarOne.setColor("White");
-//		testCarOne.setYear("2011");
-//		testCarOne.setPlate("RB99-01");
-//
-//		testCars.add(testCarOne);
-//		testCars.add(testCarTwo);
-//		testTDO.setData(testCars);
+
+		LicencePlate testCarOne = new LicencePlate();
+		testCarOne.setCarBrand("Audi");
+		testCarOne.setCarModel("R8");
+		testCarOne.setColor("White");
+		testCarOne.setYear("2011");
+		testCarOne.setPlate("RB99-01");
+
+		LicencePlate testCarTwo = new LicencePlate();
+		testCarTwo.setCarBrand("Audi");
+		testCarTwo.setCarModel("S4");
+		testCarTwo.setColor("Indigo");
+		testCarTwo.setYear("2013");
+		testCarTwo.setPlate("KNV-421");
+
 		testTDO.setData(licencePlateService.getAllByCarBrand("Audi"));
 
 		mockMvc.perform(
@@ -80,6 +77,17 @@ public class PallidaExamApplicationTests {
 						.andExpect(status().isOk())
 						.andExpect(content().contentType("application/json;charset=UTF-8"))
 						.andExpect(jsonPath("$.result", is(testTDO.getResult())))
-						.andExpect(jsonPath("$.data").isNotEmpty());
+						.andExpect(jsonPath("$.data").isNotEmpty())
+						.andExpect(jsonPath("$.data[0].plate", is(testCarOne.getPlate())))
+						.andExpect(jsonPath("$.data[0].year", is(testCarOne.getYear())))
+						.andExpect(jsonPath("$.data[0].color", is(testCarOne.getColor())))
+						.andExpect(jsonPath("$.data[0].car_model", is(testCarOne.getCarModel())))
+						.andExpect(jsonPath("$.data[0].car_brand", is(testCarOne.getCarBrand())))
+
+						.andExpect(jsonPath("$.data[1].plate", is(testCarTwo.getPlate())))
+						.andExpect(jsonPath("$.data[1].year", is(testCarTwo.getYear())))
+						.andExpect(jsonPath("$.data[1].color", is(testCarTwo.getColor())))
+						.andExpect(jsonPath("$.data[1].car_model", is(testCarTwo.getCarModel())))
+						.andExpect(jsonPath("$.data[1].car_brand", is(testCarTwo.getCarBrand())));
 	}
 }

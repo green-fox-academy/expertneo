@@ -1,12 +1,11 @@
-package com.greenfox.reporting.models.FoxUser;
-
-import com.greenfox.reporting.models.Report.Report;
+package com.greenfox.reporting.models.entities;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table
 public class FoxUser {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +14,7 @@ public class FoxUser {
   private String email;
   private int age;
 
-  @OneToMany (mappedBy = "user")
+  @OneToMany (fetch = FetchType.LAZY, mappedBy = "foxuser")
   List<Report> reports = new ArrayList<>();
 
 
@@ -58,5 +57,13 @@ public class FoxUser {
 
   public void setAge(int age) {
     this.age = age;
+  }
+
+  public List<Report> getReports() {
+    return reports;
+  }
+
+  public void setReports(List<Report> reports) {
+    this.reports = reports;
   }
 }

@@ -1,6 +1,5 @@
-package com.greenfox.reporting.models.Report;
+package com.greenfox.reporting.models.entities;
 
-import com.greenfox.reporting.models.FollowUp.FollowUp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -9,13 +8,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @Entity
+@Table
 public class Report {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long reportId;
   private boolean isActive;
-  private final List<String> categories = new ArrayList<>(Arrays.asList("Service Quality",
-          "Health And Safety"));
   private String category;
   private String title;
   private String body;
@@ -24,19 +22,21 @@ public class Report {
   private String dueDate;
   private String timeStampOfTheReport;
 
-  @OneToMany (mappedBy = "report")
-  List<FollowUp> followUps = new ArrayList<>();
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "foxuser_id")
+  private FoxUser foxuser;
+
+  @OneToMany (fetch = FetchType.LAZY, mappedBy = "report")
+  private List<FollowUp> followUps = new ArrayList<>();
 
   public Report() {
     this.timeStampOfTheReport = String.valueOf(LocalDateTime.now());
     this.isActive = true;
   }
 
-  public Report(int categorySelector, String title, String body, String actionItem, String
-          eventDate,
-                String dueDate) {
-    this.isActive = true;
-    this.category = categories.get(categorySelector);
+  public Report(boolean isActive, String category, String title, String body, String actionItem, String eventDate, String dueDate, String timeStampOfTheReport) {
+    this.isActive = isActive;
+    this.category = category;
     this.title = title;
     this.body = body;
     this.actionItem = actionItem;
@@ -59,10 +59,6 @@ public class Report {
 
   public void setActive(boolean active) {
     isActive = active;
-  }
-
-  public List<String> getCategories() {
-    return categories;
   }
 
   public String getCategory() {
@@ -119,6 +115,14 @@ public class Report {
 
   public void setTimeStampOfTheReport(String timeStampOfTheReport) {
     this.timeStampOfTheReport = timeStampOfTheReport;
+  }
+
+  public FoxUser getFoxuser() {
+    return foxuser;
+  }
+
+  public void setFoxuser(FoxUser foxuser) {
+    this.foxuser = foxuser;
   }
 
   public List<FollowUp> getFollowUps() {

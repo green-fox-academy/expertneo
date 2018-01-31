@@ -1,16 +1,18 @@
-package com.greenfox.reporting.models.FollowUp;
+package com.greenfox.reporting.models.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table
 public class FollowUp {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long followUpId;
   private String content;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "report_id")
+  private Report report;
 
   public FollowUp() {
   }
@@ -33,5 +35,13 @@ public class FollowUp {
 
   public void setContent(String content) {
     this.content = content;
+  }
+
+  public Report getReport() {
+    return report;
+  }
+
+  public void setReport(Report report) {
+    this.report = report;
   }
 }
