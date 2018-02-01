@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Orientation exam practice by Bence, The KING OF REST API</title>
+</head>
+<body>
+    <div style="text-align: center">
+        <h1>Bence's Practice for the orientation exam</h1>
+        <h1>KING OF THE REST API</h1>
+        <a href="/?username=Bence">All todos for Bence</a>
+        <a href="/?username=Lilla">All todos for Lilla</a>
+        <a href="/?importance=Very important">Very important</a>
+        <a href="/?importance=Important">Important</a>
+        <a href="/?importance=Not important">Not important</a>
+    </div>
+    <div>
+        <form action="/" method="get">
+            <input type="text" name="q" th:placeholder="${searchValue}"/>
+            <input type="submit" th:value="SEARCH"/>
+        </form>
+    </div>
+    <div>
+        <table>
+            <thead>
+            <tr>
+                <th style="text-align: center">Title</th>
+                <th style="text-align: center">Description</th>
+                <th style="text-align: center">Importance</th>
+                <th style="text-align: center">Created By</th>
+                <th style="text-align: center">TimeStamp</th>
+                <th style="text-align: center">Done?</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="todo : ${todos}" style="text-align: center">
+                <td th:text="${todo.title}"></td>
+                <td th:text="${todo.description}"></td>
+                <td th:text="${todo.importance}"></td>
+                <td th:text="${todo.createdBy}"></td>
+                <td th:text="${todo.dateAndTime}"></td>
+                <td th:if="@{todo.done}"><input type="checkbox" th:value="${todo.done}" th:checked="${todo.done}"/></td>
+                <td th:unless="@{todo.done}"><input type="checkbox" th:value="${todo.done}" th:checked="${todo.done}"/></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+<a href="/">Back to original</a>
+</body>
+</html>

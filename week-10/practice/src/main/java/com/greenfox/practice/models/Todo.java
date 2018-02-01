@@ -19,17 +19,19 @@ public class Todo {
   private String importance;
   private String createdBy;
   private String dateAndTime;
+  private boolean done;
 
   public Todo() {
     this.dateAndTime = String.valueOf(LocalDateTime.now());
   }
 
-  public Todo(String title, String description, String importance, String createdBy) {
+  public Todo(String title, String description, String importance, String createdBy, boolean done) {
     this.title = title;
     this.description = description;
     this.importance = importance;
     this.createdBy = createdBy;
     this.dateAndTime = String.valueOf(LocalDateTime.now());
+    this.done = done;
   }
 }
 

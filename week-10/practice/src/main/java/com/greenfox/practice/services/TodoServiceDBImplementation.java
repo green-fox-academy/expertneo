@@ -29,6 +29,21 @@ public class TodoServiceDBImplementation implements TodoService {
   }
 
   @Override
+  public List<Todo> getAllByCreatedByAndImportance(String createdBy, String importance) {
+    return todoRepository.getAllByCreatedByAndImportance(createdBy, importance);
+  }
+
+  @Override
+  public List<Todo> getAllByDone(boolean done) {
+    return todoRepository.getAllByDone(done);
+  }
+
+  @Override
+  public List<Todo> getAllByDescriptionContaining(String query) {
+    return todoRepository.getAllByDescriptionContaining(query);
+  }
+
+  @Override
   public List<Todo> getAllTodos() {
     List<Todo> todos = new ArrayList<>();
     todoRepository.findAll().forEach(todos::add);

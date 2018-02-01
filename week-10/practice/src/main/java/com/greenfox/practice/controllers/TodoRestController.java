@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -40,7 +39,7 @@ public class TodoRestController {
       newTodoDTO.setResult("Ok, Todo created!");
       todo.setCreatedBy(userName);
       todoService.createTodo(todo);
-      List<Todo> tasks =todoService.getAllByCreatedBy(userName);
+      List<Todo> tasks = todoService.getAllByCreatedBy(userName);
       newTodoDTO.setTasks(tasks);
       return ResponseEntity.ok().body(newTodoDTO);
     }
