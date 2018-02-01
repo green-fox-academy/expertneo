@@ -1,10 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Retake Exam: Pallida</title>
 </head>
 <body>
-
+    <div style="text-align: center">
+        <h1>Green Fox Fashion Web Store</h1>
+        <h2>Summary</h2>
+    </div>
+    <div style="text-align: center">
+        <table>
+            <thead>
+                <tr>
+                    <th>Item name</th>
+                    <th>Manufacturer</th>
+                    <th>Category</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                    <th>Sub-total price</th>
+                </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${item.itemName}"></td>
+                <td th:text="${item.manufacturer}"></td>
+                <td th:text="${item.category}"></td>
+                <td th:text="${item.size}"></td>
+                <td th:text="${quantity}"></td>
+                <td th:text="${totalPrice}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="/">Back to the main page</a>
+    </div>
 </body>
 </html>

@@ -55,4 +55,8 @@ public class ItemService {
     }
     return uniqueItemSizes;
   }
+
+  public Item getByItemNameAndSize(String name, String size) {
+    return itemRepository.getByItemNameAndSize(name, size);
+  }
 }

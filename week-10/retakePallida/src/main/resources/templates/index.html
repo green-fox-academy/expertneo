@@ -4,25 +4,25 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
         <title>Retake Exam: Pallida</title>
-
 </head>
 <body>
     <div>
         <h1>Green Fox Fashion Web Store</h1>
-        <form th:action="@{/shoppingplanner/results}" th:object="${item}" method="post">
-            <select th:field="${uniqueItemNames}">
+        <form th:action="@{/summary}" th:object="${newItemData}" method="post">
+            <select th:field="${newItemData.name}">
                 <option value="">Select item name</option>
-                <option value="" th:value="${uniqueItemName}" th:each="uniqueItemName : ${uniqueItemNames}"
+                <option value="" th:value="${uniqueItemName}"
+                        th:each="uniqueItemName : ${uniqueItemNames}"
                         th:text="${uniqueItemName}"></option>
             </select>
-            <select th:field="${uniqueItemSizes}">
+            <select th:field="${newItemData.size}">
                 <option value="">Select size</option>
-                <option th:value="${uniqueSize}"
+                <option value="" th:value="${uniqueItemSize}"
                         th:each="uniqueItemSize : ${uniqueItemSizes}"
                         th:text="${uniqueItemSize}"></option>
             </select>
-            <input type="text" name="Quantity" th:field="*{quantity}"/>
-            <input type="submit" value="Add"/>
+            <input type="text" name="quantity" th:field="*{quantity}"/>
+            <input type="submit" value="GET TOTAL"/>
         </form>
     </div>
     <div>

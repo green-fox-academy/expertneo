@@ -11,4 +11,5 @@ public interface ItemRepository extends CrudRepository<Item, Integer> {
   List<Item> getAllByUnitPriceEquals(double unitPrice);
   List<Item> getAllByUnitPriceGreaterThan(double unitPrice);
   List<Item> getAllByUnitPriceLessThan(double unitPrice);
+  Item getByItemNameAndSize(String name, String size);
 }
