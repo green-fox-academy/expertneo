@@ -19,6 +19,11 @@
         <form action="/" method="get">
             <input type="text" name="q" th:placeholder="${searchValue}"/>
             <input type="submit" th:value="SEARCH"/>
+            <select>
+                <option value="">Select the userName</option>
+                <option th:each="uniqueUserName : ${uniqueUserNames}" th:text="${uniqueUserName}"
+                        th:value="${uniqueUserName}" value=""></option>
+            </select>
         </form>
     </div>
     <div>

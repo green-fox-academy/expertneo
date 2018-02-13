@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Controller
 public class TodoWebController {
 
@@ -32,6 +35,9 @@ public class TodoWebController {
       model.addAttribute("todos", todoService.getAllByCreatedByAndImportance(userName, importance));
     }
     model.addAttribute("searchResult", query);
+    model.addAttribute("uniqueUserNames", todoService.getAllUniqueUsers());
+    model.addAttribute("uniqueImportance", Arrays.asList("Very important", "Important", "Not " +
+            "important"));
     return "index";
   }
 }

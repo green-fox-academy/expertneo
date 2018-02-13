@@ -59,4 +59,16 @@ public class TodoServiceDBImplementation implements TodoService {
   public void deleteTodo(int id) {
     todoRepository.delete(id);
   }
+
+  public List<String> getAllUniqueUsers() {
+    List<Todo> todos = getAllTodos();
+    List<String> uniqueUserNames = new ArrayList<>();
+
+    for (int i = 0; i < todos.size(); i++) {
+      if (!uniqueUserNames.contains(todos.get(i).getCreatedBy())) {
+        uniqueUserNames.add(todos.get(i).getCreatedBy());
+      }
+    }
+    return uniqueUserNames;
+  }
 }

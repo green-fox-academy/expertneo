@@ -17,4 +17,5 @@ public interface TodoService {
   List<Todo> getAllTodos();
   void createTodo(Todo todo);
   void deleteTodo(int id);
+  public List<String> getAllUniqueUsers();
 }
