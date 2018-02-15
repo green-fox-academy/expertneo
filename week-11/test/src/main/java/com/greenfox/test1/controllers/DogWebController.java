@@ -12,8 +12,13 @@ public class DogWebController {
   @Autowired
   DogService dogService;
 
-  @GetMapping("/API/")
-  public String indexPage() {
+  @GetMapping("/public/")
+  public String indexPagePublic() {
+    return "index";
+  }
+
+  @GetMapping("/secure/")
+  public String indexPageSecure() {
     return "index";
   }
 }
