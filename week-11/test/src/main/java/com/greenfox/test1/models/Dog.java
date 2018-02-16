@@ -19,7 +19,7 @@ import javax.persistence.Id;
 public class Dog {
   int age;
   String name;
-
+  
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   int id;

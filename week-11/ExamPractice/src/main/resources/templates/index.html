@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Spaceship exercise</title>
+</head>
+<body>
+<h1 style="font-weight: bolder">
+    Space Transporter
+</h1>
+    <div>
+    <table border="1">
+        <thead>
+            <tr style="font-weight: bolder">
+                <th>Planet</th>
+                <th>Population</th>
+                <th>Spaceship Location</th>
+                <th>People on Ship</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="planet : ${planets}">
+                <td th:text="${planet.name}"></td>
+                <td th:text="${planet.population}"></td>
+                <td th:if="${spaceship.planet} == ${planet.name}">
+                    <a th:href="@{/toplanet/} + ${planet.id}">&#8592; To planet</a>
+                    <a th:href="@{/toship/} + ${planet.id}">To ship &#8594;</a>
+                </td>
+                <td th:unless="${spaceship.planet} == ${planet.name}">
+                    <form action="#" th:action="@{/movehere/} + ${planet.id}" method="post">
+                        <button type="submit" th:value="${planet.id}">Move here</button>
+                    </form>
+                </td>
+
+                <td th:if="${spaceship.planet} == ${planet.name}"
+                    th:text="${spaceship.utilization}"></td>
+                <td th:unless="${spaceship.planet} == ${planet.name}"
+                    th:text="'-'"></td>
+
+            </tr>
+        </tbody>
+    </table>
+    </div>
+</body>
+</html>
