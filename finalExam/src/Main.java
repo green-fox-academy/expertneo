@@ -10,8 +10,9 @@ public class Main {
 
     System.out.println("Most elegant solution: " + Arrays.toString(mixer_bestSolution(arrayOne,
             arrayTwo)));
-    System.out.println("Solution one: " + Arrays.toString(mixer_solutionTwo(arrayOne, arrayTwo)));
-    System.out.println("Solution two: " + Arrays.toString(mixer_solutionThree(arrayOne, arrayTwo)));
+    System.out.println("Solution two: " + Arrays.toString(mixer_solutionTwo(arrayOne, arrayTwo)));
+    System.out.println("Solution three: " + Arrays.toString(mixer_solutionThree(arrayOne,
+            arrayTwo)));
   }
 
   public static int[] mixer_bestSolution(int[] arrayOne, int[] arrayTwo) {
